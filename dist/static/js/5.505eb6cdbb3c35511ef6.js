@@ -1,0 +1,2 @@
+webpackJsonp([5],{XpV7:function(t,e){},eGou:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var c={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",{staticClass:"container"},[e("button",{on:{click:this.back}},[this._v("back")])])},staticRenderFns:[]};var s=n("VU/8")({name:"personal",methods:{back:function(){this.$router.goBack()}}},c,!1,function(t){n("XpV7")},null,null);e.default=s.exports}});
+//# sourceMappingURL=5.505eb6cdbb3c35511ef6.js.map
