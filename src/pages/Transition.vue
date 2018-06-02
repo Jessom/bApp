@@ -68,6 +68,8 @@ export default {
     .vux-header-title {
       margin: 0 88px 0 15px;
       text-align: left;
+      overflow: hidden;
+      line-height: 44px;
     }
     &.show-back .vux-header-title {
       margin: 0 88px 0 40px;

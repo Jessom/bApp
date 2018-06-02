@@ -1,12 +1,26 @@
 <template>
   <div class="container">
-    <swiper auto loop height="100px">
-      <swiper-item class="black"><h2 class="title fadeInUp animated">它无孔不入</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">你无处可藏</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">不是它可恶</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">而是它不懂你</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">我们试图</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">做些改变</h2></swiper-item>
+    <swiper auto loop :interval='5000' height="140px">
+      <swiper-item class="black">
+        <h2 class="title fadeInUp animated">きみとなつのおわりしょうらいのゆめ</h2>
+        <p>与你在夏末约定 将来的梦想</p>
+      </swiper-item>
+      <swiper-item class="black">
+        <h2 class="title fadeInUp animated">おおきなきぼうわすれない</h2>
+        <p>远大的希望 别忘记</p>
+      </swiper-item>
+      <swiper-item class="black">
+        <h2 class="title fadeInUp animated">じゅうねんごのはちげつ</h2>
+        <p>在十年后的八月</p>
+      </swiper-item>
+      <swiper-item class="black">
+        <h2 class="title fadeInUp animated">またであえるのをしんじて</h2>
+        <p>我相信还能再与你相遇</p>
+      </swiper-item>
+      <swiper-item class="black">
+        <h2 class="title fadeInUp animated">さいこうのおもいでを…</h2>
+        <p>最美好的回忆...</p>
+      </swiper-item>
     </swiper>
     <grid
       :show-lr-borders="false"
@@ -37,42 +51,33 @@ export default {
   name: 'index',
   data() {
     return {
-      list: [{
-        id: 1,
-        src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-        title: '谷歌在中国推出第二款应用：Google文件极客',
-        desc: '谷歌今日在中国多家应用商店推出文件管理工具Files Go中文版Google文件极客，这是自谷歌主要服务退出中国市场之后推出的第二个面向中国市场的App。'
-      }, {
-        id: 2,
-        src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-        title: '今日头条腾讯再掀口水仗百度躺枪',
-        desc: '腾讯和今日头条在短视频领域的纠葛还未结束，战火便迅速烧到了其他领域。'
-      }, {
-        id: 3,
-        src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-        title: '软银将向通用汽车（GM）旗下 Cruise投资22.5亿美元',
-        desc: '通用汽车（GM）周四表示，日本软银将向GM旗下无人驾驶车公司Cruise Holdings投资22.5亿美元。'
-      }, {
-        id: 4,
-        src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-        title: '滴滴：新版紧急求助功能上线，快车人车不符可举报',
-        desc: '滴滴宣布，新版紧急求助功能已正式上线；快车已上线人车不符评价机制；快车已在部分城市上线每天出车前司机人脸识别功能，将尽快做到快车、专车、豪华车全量上线；平台已研发并上线大数据识别模型，对识别出的人车不符进行核查，一经核实马上封禁。'
-      }, {
-        id: 5,
-        src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-        title: '百度回应输入法植入广告: 不是官方版本',
-        desc: '5月31日消息，针对微博网友质疑百度手机输入法根据用户输入推送相应广告的质疑'
-      }]
+      list: []
     }
   },
   methods: {
     itemClick(item) {
       console.log(item)
       this.$router.push({ path: `/detail/${item.id}` })
+    },
+    async getData() {
+      try {
+        const res = await this.$http.get(`static/data/news.json`)
+        this.list = res.map(c => {
+          return {
+            id: c.id,
+            src: c.image,
+            title: c.title,
+            desc: c.desc
+          }
+        })
+      } catch(e) {
+        console.log(e)
+      }
     }
   },
   created() {
     this.$store.commit(SET_BACK, false)
+    this.getData()
   },
   components: {
     Swiper,
@@ -91,7 +96,11 @@ export default {
     background-color: #000;
     color: #fff;
     text-align: center;
-    line-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*line-height: 140px;*/
   }
   .menu-group {
     background-color: #fff;

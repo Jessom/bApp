@@ -9,6 +9,11 @@ import VueProgressBar from 'vue-progressbar'
 import fly from 'flyio'
 
 Vue.prototype.$http = fly
+fly.interceptors.response.use(res => {
+	return res.data
+}, err => {
+	console.log(err)
+})
 Vue.use(VueProgressBar, PROGRESS_CONF)
 Vue.config.productionTip = false
 
