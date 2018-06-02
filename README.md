@@ -1,6 +1,11 @@
-# webapp
+# bApp
 
-> A Vue.js project
+## 技术栈
+* [vue](https://github.com/vuejs/vue)
+* [vuex](https://github.com/vuejs/vuex)
+* [vue-router](https://github.com/vuejs/vue-router)
+* [vux](https://github.com/airyland/vux)
+* [fly](https://github.com/wendux/fly)
 
 ## Build Setup
 
@@ -27,4 +32,5 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+MIT

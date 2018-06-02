@@ -20,11 +20,12 @@
 
 <script>
 import { Tabbar, TabbarItem, Icon } from 'vux'
+import { SET_TITLE } from '@/store/types'
 export default {
 	name: 'basecontainer',
 	computed: {
 		selected() {
-			this.$store.commit('SET_TITLE', this.$route.name)
+			this.$store.commit(SET_TITLE, this.$route.name)
 			return this.$route.path
 		}
 	},

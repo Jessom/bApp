@@ -19,8 +19,12 @@
 
 <script>
 import { Icon, Grid, GridItem } from 'vux'
+import { SET_BACK } from '@/store/types'
 export default {
 	name: 'menuwarp',
+  created() {
+    this.$store.commit(SET_BACK, false)
+  },
 	components: {
 		Grid,
 		GridItem,

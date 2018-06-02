@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import { SET_BACK } from '@/store/types'
 export default {
 	name: 'personal',
+	created() {
+		this.$store.commit(SET_BACK, false)
+	},
 	methods: {
 		back() {
 			this.$router.goBack()

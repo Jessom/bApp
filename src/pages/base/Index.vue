@@ -27,12 +27,16 @@
 
 <script>
 import { Swiper, SwiperItem, Icon, Grid, GridItem } from 'vux'
+import { SET_BACK } from '@/store/types'
 export default {
   name: 'index',
   methods: {
     jump() {
       this.$router.push({ path: '/personal' })
     }
+  },
+  created() {
+    this.$store.commit(SET_BACK, false)
   },
   components: {
     Swiper,

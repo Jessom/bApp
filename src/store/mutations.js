@@ -1,9 +1,10 @@
-import { SHOW_LOADING, HIDE_LOADING, SET_LOADING_TEXT, SET_TITLE } from './types'
+import { SHOW_LOADING, HIDE_LOADING, SET_LOADING_TEXT, SET_TITLE, SET_BACK } from './types'
 
 const state = {
 	loading: false,
 	loadingText: '',
-	title: '首页'
+	title: '首页',
+	showBack: true
 }
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
 	},
 	[SET_TITLE](state, title) {
 		state.title = title
+	},
+	[SET_BACK](state, show) {
+		state.showBack = show
 	}
 }
 

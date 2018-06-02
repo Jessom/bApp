@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <x-header
-      :left-options='{backText:"",showBack:false,preventGoBack:true}'
+      :left-options='{backText:"",showBack:showBack,preventGoBack:true}'
       :title='title'
+      :class='{"show-back":showBack}'
       @on-click-back='back' />
     <transition :name='transitionName'>
       <router-view class='child-view'></router-view>
@@ -22,7 +23,8 @@ export default {
   },
   computed: {
     ...mapState({
-      title: state => state.mutations.title
+      title: state => state.mutations.title,
+      showBack: state => state.mutations.showBack
     })
   },
   beforeRouteUpdate(to, from, next) {
@@ -61,9 +63,14 @@ export default {
 	transform: translate(-50px, 0);
 }
 #app {
-  .vux-header .vux-header-title {
-    margin: 0 88px 0 40px;
-    text-align: left;
+  .vux-header {
+    .vux-header-title {
+      margin: 0 88px 0 15px;
+      text-align: left;
+    }
+    &.show-back .vux-header-title {
+      margin: 0 88px 0 40px;
+    }
   }
   .vux-header {
     position: fixed;
