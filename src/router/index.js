@@ -28,6 +28,10 @@ export default new Router({
 				name: '我的',
 				component: resolve => require(['@/pages/base/Personal.vue'], resolve)
 			}]
+		}, {
+			path: 'detail/:id',
+			name: 'detail',
+			component: resolve => require(['@/pages/Detail.vue'], resolve)
 		}]
   }]
 })

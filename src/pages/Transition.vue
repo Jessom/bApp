@@ -51,6 +51,7 @@ export default {
 	width: 100%;
   transition: all .5s cubic-bezier(.55, 0, .1, 1);
   padding-top: 23px;
+  padding-bottom: 80px;
 }
 .slide-left-enter, .slide-right-leave-active {
 	opacity: 0;
