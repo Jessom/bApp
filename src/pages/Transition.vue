@@ -6,7 +6,9 @@
       :class='{"show-back":showBack}'
       @on-click-back='back' />
     <transition :name='transitionName'>
-      <router-view class='child-view'></router-view>
+      <keep-alive>
+        <router-view class='child-view'></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -21,17 +23,23 @@ export default {
       transitionName: 'slide-left'
     }
   },
+  watch: {
+    '$route'(to, from) {
+      /*
+        let isBack = this.$router.isBack
+        this.transitionName = isBack ? 'slide-right' : 'slide-left'
+        this.$router.isBack = false
+       */
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
+  },
   computed: {
     ...mapState({
       title: state => state.mutations.title,
       showBack: state => state.mutations.showBack
     })
-  },
-  beforeRouteUpdate(to, from, next) {
-    let isBack = this.$router.isBack
-    this.transitionName = isBack ? 'slide-right' : 'slide-left'
-    this.$router.isBack = false
-    next()
   },
   methods: {
     back() {

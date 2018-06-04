@@ -20,7 +20,6 @@ export default new Router({
 		component: resolve => require(['@/pages/Transition.vue'], resolve),
 		children: [{
 			path: '',
-			name: 'basecontainer',
 			component: resolve => require(['@/pages/base/Container.vue'], resolve),
 			children: [{
 				path: '',
@@ -40,5 +39,9 @@ export default new Router({
 			name: 'detail',
 			component: resolve => require(['@/pages/Detail.vue'], resolve)
 		}]
-  }]
+  }, {
+		path: '*',
+		name: '404',
+		component: resolve => require(['@/pages/404.vue'], resolve)
+	}]
 })

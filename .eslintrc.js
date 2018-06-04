@@ -28,6 +28,7 @@ module.exports = {
     'indent': 0,
     'no-tabs': 0,
     'space-before-function-paren': 0,
-    'keyword-spacing': 0
+    'keyword-spacing': 0,
+    'spaced-comment': 0
   }
 }

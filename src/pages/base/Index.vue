@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     itemClick(item) {
-      console.log(item)
       this.$router.push({ path: `/detail/${item.id}` })
     },
     async getData() {
@@ -100,7 +99,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*line-height: 140px;*/
   }
   .menu-group {
     background-color: #fff;

@@ -17,12 +17,12 @@ export default {
 	},
 	created() {
 		this.$store.commit(SET_BACK, true)
-		this.getData()
 	},
 	methods: {
 		async getData() {
 			let id = this.$route.params.id
 			try {
+				this.$Progress.start()
 				const res = await this.$http.get(`static/data/news.json`)
 				for(let item of res) {
 					if(item.id === Number(id)) {
@@ -30,26 +30,31 @@ export default {
 						this.data = item
 					}
 				}
-				console.log(this.data)
+				this.$Progress.finish()
 			} catch(e) {
 				console.log(e)
+				this.$Progress.fail()
 			}
 		}
+	},
+	activated() {
+		this.getData()
 	}
 }
 </script>
 
 <style lang='less'>
 .container {
-	background-color: #fff;
 	.content {
 		padding: 15px;
 		p {
-			text-indent: 2em;
 			color: #666;
 			line-height: 1.8;
 			margin-top: 10px;
 			font-size: 13px;
+		}
+		img {
+			width: 100%;
 		}
 	}
 	.desc {
